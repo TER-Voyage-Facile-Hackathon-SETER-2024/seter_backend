@@ -8,7 +8,7 @@ class ApiResponse{
     {
         return response()->json(
             [
-                "status" => true,
+                "status" => 0,
                 "data" => $data ?? [],
                 "token" => $token,
                 "message" => $message,
@@ -22,7 +22,21 @@ class ApiResponse{
     {
         return response()->json(
             [
-                "status" => false,
+                "status" => 1,
+                "data" => $data ?? [],
+                "token" => $token,
+                'message' => $message,
+
+            ],
+            $statusCode
+        );
+    }
+
+    public static function errorValidation($data = null, $message = '', $statusCode = 422, $token='')
+    {
+        return response()->json(
+            [
+                "status" => 2,
                 "data" => $data ?? [],
                 "token" => $token,
                 'message' => $message,

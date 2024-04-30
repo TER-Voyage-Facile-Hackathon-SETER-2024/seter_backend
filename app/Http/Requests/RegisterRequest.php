@@ -28,7 +28,6 @@ class RegisterRequest extends FormRequest
     {
         return [
             'fullname' => 'required|string',
-            'otp' => 'required|string|min:6',
             'adress' => 'required|string',
             'isSubscribe' => 'boolean',
             'cgu'=> 'required',
@@ -39,10 +38,8 @@ class RegisterRequest extends FormRequest
     {
         return [
             'fullname.required' => 'Le prenom est obligatoire.',
-            'otp.required' => 'Le code otp est obligatoire.',
             'cgu.required' => "confirmez les conditions générales d'utilisation.",
             'adress.required' => "L'adresse est obligatoire.",
-            'otp.min' => "le code doit être de six chiffres.",
             'phone.required' => "Le numero de telephone est obligatoire",
             'phone.regex' => 'Le format du numéro de téléphone doit être valide.',
             'phone.unique' => 'Le numéro de téléphone existe deja',
@@ -54,6 +51,6 @@ class RegisterRequest extends FormRequest
     protected function failedValidation(Validator $validator)
     {
         $message = $validator->errors()->first();
-        throw new HttpResponseException(ApiResponse::error($validator->errors()->toArray(), $message, 422));
+        throw new HttpResponseException(ApiResponse::errorValidation($validator->errors()->toArray(), $message, 422));
     }
 }

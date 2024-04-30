@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('fullname');
-            $table->string('otp');
             $table->string('adress');
             $table->string('phone')->unique();
             $table->boolean('isSubscribe')->default(false);

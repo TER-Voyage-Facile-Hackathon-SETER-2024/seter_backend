@@ -29,6 +29,7 @@ class LoginController extends Controller
     public function register(RegisterRequest $request, RegisterUseCase $registerUseCase)
     {
         $registerData = $request->validated();
+
         $user = $registerUseCase->execute($registerData);
         if ($user) {
             auth()->login($user);
@@ -41,6 +42,27 @@ class LoginController extends Controller
             return $response;
         } else {
             return ApiResponse::error(null, "An error occure while trying to create a user");
+        }
+        $data = $registerUseCase->execute($registerData);
+        $formatterData = new RegisterResource($data);
+        return ApiResponse::success($formatterData, 'utilisateur inscrit avec succés ', 201);
+    }
+
+    public function update(UpdateUserRequest $request,RegisterUseCase $registerUseCase)
+    {
+        $registerData = $request->validated();
+        $data = $registerUseCase->updateUser($request);
+        $formatterData = new RegisterResource(User::find($request['id']));
+        return ApiResponse::success($formatterData, 'utilisateur modifié avec succés ', 201);
+    }
+
+    public function getUser($id,RegisterUseCase $registerUseCase) {
+        $user = $registerUseCase->getUser($id);
+        if($user) {
+            $formatterData = new RegisterResource($user);
+            return ApiResponse::success($formatterData, 'utilisateur trouvé avec succés ', 201);
+        } else {
+            return ApiResponse::error(null, "Utilisateur non trouvé");
         }
     }
 }

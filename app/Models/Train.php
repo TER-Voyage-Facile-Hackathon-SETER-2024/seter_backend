@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Train extends Model
 {
@@ -18,4 +19,7 @@ class Train extends Model
         'title',
         'number',
     ];
+    public function voyage():HasMany{
+        return $this->hasMany(Voyage::class);
+    }
 }

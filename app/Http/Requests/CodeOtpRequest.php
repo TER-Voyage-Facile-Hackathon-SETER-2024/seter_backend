@@ -40,6 +40,6 @@ class CodeOtpRequest extends FormRequest
     protected function failedValidation(Validator $validator)
     {
         $message = $validator->errors()->first();
-        throw new HttpResponseException(ApiResponse::error($validator->errors()->toArray(), $message, 422));
+        throw new HttpResponseException(ApiResponse::errorValidation($validator->errors()->toArray(), $message, 422));
     }
 }
