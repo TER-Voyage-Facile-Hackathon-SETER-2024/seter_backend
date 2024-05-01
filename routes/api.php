@@ -21,7 +21,6 @@ Route::get('v1/gare',[GareController::class,'index']);
 Route::post('v1/gare',[GareController::class,'store']);
 Route::get('v1/train',[TrainController::class,'index']);
 Route::post('v1/train',[TrainController::class,'store']);
-Route::post('v1/genererCode',[VoyageController::class,'scanQRCode']);
 Route::post('v1/voyage',[VoyageController::class,'store']);
 Route::get('v1/voyage',[VoyageController::class,'index']);
 Route::get('v1/voyage/{id}',[VoyageController::class,'byUser']);

@@ -12,7 +12,7 @@ use App\Utils\ApiResponse;
 class GareController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * lister l'ensemble des gares.
      */
     public function index(GareUseCase $gareUseCase)
     {
@@ -21,7 +21,7 @@ class GareController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * ajouter une nouvelle gare.
      */
     public function store(StoreGareRequest $request,GareUseCase $gareUseCase)
     {

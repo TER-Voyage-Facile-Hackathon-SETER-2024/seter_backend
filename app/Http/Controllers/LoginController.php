@@ -13,9 +13,11 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function login()
-    {
-    }
+
+    /**
+     * methode deconnexion d'un utilisateur.
+     */
+    
 
     public function logout(Request $request)
     {
@@ -26,6 +28,11 @@ class LoginController extends Controller
             return response()->json(['message' => 'No user is currently authenticated'], 401);
         }
     }
+
+    /**
+     * methode pour l'inscription d'un utilisateur.
+     */
+    
     public function register(RegisterRequest $request, RegisterUseCase $registerUseCase)
     {
         $registerData = $request->validated();
@@ -48,6 +55,11 @@ class LoginController extends Controller
         return ApiResponse::success($formatterData, 'utilisateur inscrit avec succés ', 201);
     }
 
+    /**
+     * methode pour modifier les infos d'un utilisateur.
+     */
+    
+
     public function update(UpdateUserRequest $request,RegisterUseCase $registerUseCase)
     {
         $registerData = $request->validated();
@@ -55,7 +67,14 @@ class LoginController extends Controller
         $formatterData = new RegisterResource(User::find($request['id']));
         return ApiResponse::success($formatterData, 'utilisateur modifié avec succés ', 201);
     }
+     /**
+     * @param string $id l'id de l'utilisateur .
+     */
 
+    /**
+     * methode pour recuperer un utilisateur.
+     */
+    
     public function getUser($id,RegisterUseCase $registerUseCase) {
         $user = $registerUseCase->getUser($id);
         if($user) {

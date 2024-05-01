@@ -12,7 +12,7 @@ use App\Utils\ApiResponse;
 class TrainController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * lister l'ensemble des gares.
      */
     public function index(TrainUseCase $trainUseCase)
     {
@@ -21,7 +21,7 @@ class TrainController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * ajouter un nouveau train.
      */
     public function store(StoreTrainRequest $request,TrainUseCase $trainUseCase)
     {

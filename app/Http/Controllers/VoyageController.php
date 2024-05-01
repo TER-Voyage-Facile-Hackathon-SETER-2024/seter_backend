@@ -10,18 +10,10 @@ use Illuminate\Http\Request;
 
 class VoyageController extends Controller
 {
-    public function scanQRCode(Request $request)
-    {
-        $qrCodeData = $request->file('qr_code_data');
-
-        return response()->json([
-            'success' => true,
-            'data' => $qrCodeData
-        ]);
-    }
+   
 
     /**
-     * Display a listing of the resource.
+     * liste des voyages.
      */
     public function index(VoyageUseCase $voyageUseCase)
     {
@@ -30,7 +22,7 @@ class VoyageController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * ajouter un nouveau voyage.
      */
     public function store(StoreVoyageRequest $request,VoyageUseCase $voyageUseCase)
     {
@@ -38,6 +30,9 @@ class VoyageController extends Controller
         $data = $voyageUseCase->execute($registerData);
         return ApiResponse::success(new VoyageResource($data), 'Voyage ajouté avec succés', 201);
     }
+     /**
+     * obtenir le voyage d'un utilisateur.
+     */
 
     public function byUser($id,VoyageUseCase $voyageUseCase) {
         $data = $voyageUseCase->getVoyage($id);

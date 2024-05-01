@@ -10,16 +10,19 @@ use BaconQrCode\Writer;
 
 // cette classe gére la génération du QR code
 
+   
+    
 class QrCodeController extends Controller
 {
+     /**
+     * cette classe gére la génération du QR code.
+     */
     public function generateQrCode(Request $request)
     {
         $data = [
             'destination' => $request->destination,
             'depart' => $request->depart,
             'date' => $request->date,
-            'heure_arrive' => $request->heure_arrive,
-            'heure_depart' => $request->heure_depart,
             'train' => $request->train,
             'prix' => $request->prix,
             'classe' => $request->classe,

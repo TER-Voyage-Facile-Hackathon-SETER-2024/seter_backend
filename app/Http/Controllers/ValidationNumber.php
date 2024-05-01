@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Auth;
 class ValidationNumber extends Controller
 {
     private $otpGenerated;
+     /**
+     * methode pour génerer le code otp.
+     */
 
     public function getCodeAuto(CodeOtpRequest $request)
     {
@@ -25,6 +28,9 @@ class ValidationNumber extends Controller
         return ApiResponse::success([], "il existe un compte seter associé", 200);
     }
 
+     /**
+     * methode pour valider le code otp.
+     */
 
     public function verifyOtp(ValidateOtpRequest $request)
     {
