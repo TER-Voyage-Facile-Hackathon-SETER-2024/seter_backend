@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\GareController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\TrainController;
 use App\Http\Controllers\ValidationNumber;
 use App\Http\Controllers\VoyageController;
@@ -24,5 +25,6 @@ Route::post('v1/genererCode',[VoyageController::class,'scanQRCode']);
 Route::post('v1/voyage',[VoyageController::class,'store']);
 Route::get('v1/voyage',[VoyageController::class,'index']);
 Route::get('v1/voyage/{id}',[VoyageController::class,'byUser']);
+Route::post('v1/qr-code',[QrCodeController::class,'generateQrCode']);
 
 
