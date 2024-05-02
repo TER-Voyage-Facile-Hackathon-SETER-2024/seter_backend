@@ -49,4 +49,8 @@ class User extends Authenticatable
     public function voyage():HasMany{
         return $this->hasMany(Voyage::class);
     }
+
+    public function abonnement():HasMany{
+        return $this->hasMany(Abonnement::class);
+    }
 }

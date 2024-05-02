@@ -26,8 +26,8 @@ class VoyageController extends Controller
      */
     public function store(StoreVoyageRequest $request,VoyageUseCase $voyageUseCase)
     {
-        $registerData = $request->validated();
-        $data = $voyageUseCase->execute($registerData);
+        $voyageData = $request->validated();
+        $data = $voyageUseCase->execute($voyageData);
         return ApiResponse::success(new VoyageResource($data), 'Voyage ajouté avec succés', 201);
     }
      /**

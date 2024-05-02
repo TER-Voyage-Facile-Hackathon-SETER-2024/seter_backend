@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AbonnementController;
 use App\Http\Controllers\GareController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\QrCodeController;
@@ -24,6 +25,10 @@ Route::post('v1/train',[TrainController::class,'store']);
 Route::post('v1/voyage',[VoyageController::class,'store']);
 Route::get('v1/voyage',[VoyageController::class,'index']);
 Route::get('v1/voyage/{id}',[VoyageController::class,'byUser']);
+Route::post('v1/qr-code',[QrCodeController::class,'generateQrCode']);
+Route::post('v1/abonnement',[AbonnementController::class,'store']);
+Route::get('v1/abonnement',[AbonnementController::class,'index']);
+Route::get('v1/abonnement/{id}',[AbonnementController::class,'byUser']);
 Route::post('v1/qr-code',[QrCodeController::class,'generateQrCode']);
 
 

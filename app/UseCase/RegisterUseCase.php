@@ -17,4 +17,7 @@ class RegisterUseCase {
         return User::find($id);
     }
 
+    public function isAbonnement($id){
+        return User::where(['id'=>$id])->update(['isSubscribe'=>'1']);
+    }
 }

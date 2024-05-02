@@ -5,8 +5,8 @@ namespace App\UseCase;
 use App\Models\Voyage;
 
 class VoyageUseCase {
-    public function execute(array $garesdata){
-        return Voyage::create($garesdata);
+    public function execute(array $voyagesdata){
+        return Voyage::create($voyagesdata);
     }
 
     public function getAll(){
