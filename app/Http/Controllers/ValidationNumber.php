@@ -23,7 +23,7 @@ class ValidationNumber extends Controller
         $otp = OtpService::generateOtp();
         $phoneSaisit = User::where("phone", $request["phone"])->first();
         if ($phoneSaisit == null) {
-            return ApiResponse::error($otp, "aucun compte seter associé", 400);
+            return ApiResponse::error(["otp" => $otp], "aucun compte seter associé", 400);
         }
 
         return ApiResponse::success(new UserResource($phoneSaisit), "il existe un compte seter associé", 200);
