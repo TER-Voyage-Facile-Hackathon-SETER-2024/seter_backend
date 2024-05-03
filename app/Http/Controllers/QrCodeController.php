@@ -20,14 +20,25 @@ class QrCodeController extends Controller
     public function generateQrCode(Request $request)
     {
         $data = [
-            'destination' => $request->destination,
-            'depart' => $request->depart,
-            'date' => $request->date,
-            'train' => $request->train,
-            'prix' => $request->prix,
-            'classe' => $request->classe,
-            'zone' => $request->zone,
+            "code_produit" => $request->code_produit,
+            "nom_commercial" => $request->nom_commercial,
+            "limites_validite" => $request->limites_validite,
+            "nombre_periodes" => $request->nombre_periodes,
+            "type_periode" => $request->type_periode,
+            "anti_passback" => $request->anti_passback,
+            "multi_validation" => $request->multi_validation,
+            "validite_course_simple" => $request->validite_course_simple,
+            "voyages_totaux" => $request->voyages_totaux,
+            "date_basculement" => $request->date_basculement,
+            "supports" => $request->supports,
+            "profils" => $request->profils,
+            "prix" => $request->prix
+
         ];
+
+        
+
+
 
         $jsonData = json_encode($data);
         $renderer = new ImageRenderer(

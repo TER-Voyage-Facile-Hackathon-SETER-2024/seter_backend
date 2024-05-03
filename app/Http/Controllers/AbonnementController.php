@@ -13,7 +13,7 @@ use App\Utils\ApiResponse;
 class AbonnementController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Liste des abonnements.
      */
     public function index(AbonnementUseCase $abonnementUseCase)
     {
@@ -30,7 +30,7 @@ class AbonnementController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * ajouter un nouveau abonnement.
      */
     public function store(StoreAbonnementRequest $request,AbonnementUseCase $abonnementUseCase, RegisterUseCase $registerUseCase)
     {
@@ -44,7 +44,9 @@ class AbonnementController extends Controller
             throw $th;
         }
     }
-
+/**
+     * obtenir l' abonnement d'un utilisateur.
+     */
     public function byUser($id,AbonnementUseCase $abonnementUseCase) {
         $data = $abonnementUseCase->getAbonnement($id);
         return ApiResponse::success(AbonnementResource::collection($data), 'Abonnement d\'un utilisateur ', 201);
