@@ -10,7 +10,7 @@ class RegisterUseCase {
     }
 
     public function updateUser($usersdata){
-        return User::where(['id'=>$usersdata->id])->update(['fullname'=>$usersdata->fullname,'adress'=>$usersdata->adress,'phone'=>$usersdata->phone,'isSubscribe'=>$usersdata->isSubscribe,'otp'=>$usersdata->otp]);
+        return User::where(['id'=>$usersdata->id])->update(['fullname'=>$usersdata->fullname,'adress'=>$usersdata->adress,'phone'=>$usersdata->phone]);
     }
 
     public function getUser($id){

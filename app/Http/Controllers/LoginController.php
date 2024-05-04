@@ -79,7 +79,7 @@ class LoginController extends Controller
         $user = $registerUseCase->getUser($id);
         if($user) {
             $formatterData = new RegisterResource($user);
-            return ApiResponse::success($formatterData, 'utilisateur trouvé avec succés ', 201);
+            return ApiResponse::success($formatterData, 'utilisateur trouvé avec succés ', 200);
         } else {
             return ApiResponse::error(null, "Utilisateur non trouvé");
         }
